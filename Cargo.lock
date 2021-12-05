@@ -1,0 +1,12 @@
+
+[[package]]
+name = "aho-corasick"
+version = "0.6.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "memchr 2.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "ansi_term"
+version = "0.11.0"
