@@ -606,3 +606,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "yellowsun"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "blake-hash 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "groestl-aesni 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "jh-x86_64 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
