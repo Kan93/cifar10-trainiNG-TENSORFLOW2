@@ -1,4 +1,5 @@
 [package]
 name = "powhasher"
 version = "0.2.2"
-authors = ["Kaz Wesley <keziahw@gmail.c
+authors = ["Kaz Wesley <keziahw@gmail.com>"]
+lic
