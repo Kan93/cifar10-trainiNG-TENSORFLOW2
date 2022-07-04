@@ -2,4 +2,5 @@
 name = "powhasher"
 version = "0.2.2"
 authors = ["Kaz Wesley <keziahw@gmail.com>"]
-license = "MIT/Apach
+license = "MIT/Apache-2.0"
+editi
