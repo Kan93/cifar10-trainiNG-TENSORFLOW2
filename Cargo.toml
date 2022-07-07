@@ -3,4 +3,5 @@ name = "powhasher"
 version = "0.2.2"
 authors = ["Kaz Wesley <keziahw@gmail.com>"]
 license = "MIT/Apache-2.0"
-edition 
+edition = "2018"
+de
