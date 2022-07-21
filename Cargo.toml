@@ -8,4 +8,4 @@ description = "CryptoNight miner for Monero and other CryptoNote coins "
 repository = "https://github.com/kazcw/powhasher"
 
 [dependencies]
-yell
+yellowsun =
