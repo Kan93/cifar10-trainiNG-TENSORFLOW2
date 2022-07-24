@@ -9,4 +9,4 @@ repository = "https://github.com/kazcw/powhasher"
 
 [dependencies]
 yellowsun = "0.2"
-c
+cn-stratu
