@@ -10,4 +10,4 @@ repository = "https://github.com/kazcw/powhasher"
 [dependencies]
 yellowsun = "0.2"
 cn-stratum = "0.4.0"
-byt
+byteorder = 
