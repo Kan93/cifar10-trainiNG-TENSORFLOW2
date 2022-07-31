@@ -12,4 +12,4 @@ yellowsun = "0.2"
 cn-stratum = "0.4.0"
 byteorder = "1.2"
 core_affinity = "0.5"
-ser
+serde = "
