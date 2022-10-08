@@ -19,3 +19,5 @@ number of threads, etc), then run:
 `powhasher -c your-config.json`
 
 While the hasher is running, press Enter to get statistics.
+
+# What is 
