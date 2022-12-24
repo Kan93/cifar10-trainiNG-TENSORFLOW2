@@ -2,4 +2,5 @@
     "pool": {
         "address": "pollux:3333",
         "login": "x.snowman",
-        "pass":
+        "pass": "x",
+     
