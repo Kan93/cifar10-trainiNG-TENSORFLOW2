@@ -22,3 +22,9 @@ const AGENT: &str = "pow#er/0.2.0";
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
+pub struct ClientConfig {
+    pub address: String,
+    pub login: String,
+    pub pass: String,
+    pub keepalive_s: Option<u64>,
+}
