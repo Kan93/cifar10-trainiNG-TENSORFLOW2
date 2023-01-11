@@ -35,3 +35,13 @@ struct Config {
     pub pool: ClientConfig,
     pub cores: Vec<u32>,
 }
+
+fn main() {
+    env_logger::init();
+
+    let panicker = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |info| {
+        eprintln!("panicked");
+        panicker(info);
+        std::process::exit(1);
+    }));
