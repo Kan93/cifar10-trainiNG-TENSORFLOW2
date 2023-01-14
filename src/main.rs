@@ -66,3 +66,11 @@ fn main() {
         .map(serde_json::from_reader)
         .unwrap()
         .unwrap();
+    debug!("config: {:?}", &cfg);
+
+    let alloc_policy = if args.is_present("allow-slow-mem") {
+        warn!("Slow memory enabled! Performance may be poor.");
+        AllocPolicy::AllowSlow
+    } else {
+        AllocPolicy::RequireFast
+    };
