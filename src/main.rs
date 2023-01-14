@@ -53,3 +53,16 @@ fn main() {
                 .short("c")
                 .long("config")
                 .value_name("FILE")
+                .help("Sets a custom config file")
+                .required(true)
+                .takes_value(true),
+        ).arg(
+            clap::Arg::with_name("allow-slow-mem")
+                .long("allow-slow-mem")
+                .help("Continue even if hugepages are not available (SLOW!)"),
+        ).get_matches();
+
+    let cfg: Config = File::open(args.value_of("config").unwrap())
+        .map(serde_json::from_reader)
+        .unwrap()
+        .unwrap();
