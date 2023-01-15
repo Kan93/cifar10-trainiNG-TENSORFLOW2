@@ -74,3 +74,14 @@ fn main() {
     } else {
         AllocPolicy::RequireFast
     };
+
+    let client = PoolClient::connect(
+        &cfg.pool.address,
+        &cfg.pool.login,
+        &cfg.pool.pass,
+        cfg.pool.keepalive_s.map(Duration::from_secs),
+        AGENT,
+        Client::new,
+    ).unwrap();
+    let work = client.handler().work();
+    let pool = client.write_handle();
