@@ -85,3 +85,14 @@ fn main() {
     ).unwrap();
     let work = client.handler().work();
     let pool = client.write_handle();
+    thread::Builder::new()
+        .name("poolclient".into())
+        .spawn(move || client.run())
+        .unwrap();
+
+    let core_ids = core_affinity::get_core_ids().unwrap();
+    let worker_count = cfg.cores.len();
+    let mut workerstats = Vec::with_capacity(cfg.cores.len());
+    for (i, w) in cfg.cores.into_iter().enumerate() {
+        let hash_count = Arc::new(AtomicUsize::new(0));
+        workerstats.push(Arc::clone(&hash_count));
