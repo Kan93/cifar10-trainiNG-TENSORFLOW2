@@ -96,3 +96,10 @@ fn main() {
     for (i, w) in cfg.cores.into_iter().enumerate() {
         let hash_count = Arc::new(AtomicUsize::new(0));
         workerstats.push(Arc::clone(&hash_count));
+        let core = core_ids[w as usize];
+        debug!("starting worker{} on core {:?}", i, w);
+        let worker = Worker {
+            hash_count,
+            work: Arc::clone(&work),
+            pool: Arc::clone(&pool),
+            core,
