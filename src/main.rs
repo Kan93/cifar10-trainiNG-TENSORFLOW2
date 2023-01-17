@@ -111,3 +111,11 @@ fn main() {
             .name(format!("worker{}", i))
             .spawn(move || worker.run())
             .unwrap();
+    }
+
+    let mut prevstats: Vec<_> = workerstats
+        .iter()
+        .map(|w| w.load(Ordering::Relaxed))
+        .collect();
+    let start = Instant::now();
+    let mut prev_start = start;
