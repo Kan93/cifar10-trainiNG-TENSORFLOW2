@@ -119,3 +119,7 @@ fn main() {
         .collect();
     let start = Instant::now();
     let mut prev_start = start;
+    let mut total_hashes = 0;
+    let stdin = std::io::stdin();
+    let mut await_input = stdin.lock().lines();
+    loop {
