@@ -123,3 +123,13 @@ fn main() {
     let stdin = std::io::stdin();
     let mut await_input = stdin.lock().lines();
     loop {
+        println!("worker stats (since last):");
+        let now = Instant::now();
+        let cur_dur = now - prev_start;
+        let total_dur = now - start;
+        prev_start = now;
+        let mut cur_hashes = 0;
+        for (i, (prev, new)) in prevstats.iter_mut().zip(&workerstats).enumerate() {
+            let new = new.load(Ordering::Relaxed);
+            let cur = new - *prev;
+            println!("\t{}: {} H/s", i, (cur as f32) / dur_to_f32(&cur_dur));
