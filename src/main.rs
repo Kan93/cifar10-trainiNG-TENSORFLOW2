@@ -133,3 +133,10 @@ fn main() {
             let new = new.load(Ordering::Relaxed);
             let cur = new - *prev;
             println!("\t{}: {} H/s", i, (cur as f32) / dur_to_f32(&cur_dur));
+            cur_hashes += cur;
+            *prev = new;
+        }
+        total_hashes += cur_hashes;
+        println!(
+            "\ttotal (since last): {} H/s",
+            (cur_hashes as f32) / dur_to_f32(&cur_dur)
