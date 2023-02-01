@@ -140,3 +140,17 @@ fn main() {
         println!(
             "\ttotal (since last): {} H/s",
             (cur_hashes as f32) / dur_to_f32(&cur_dur)
+        );
+        println!(
+            "\ttotal (all time): {} H/s",
+            (total_hashes as f32) / dur_to_f32(&total_dur)
+        );
+        await_input.next();
+    }
+}
+
+fn dur_to_f32(dur: &Duration) -> f32 {
+    ((dur.as_secs() as f32) + (dur.subsec_nanos() as f32) / 1_000_000_000.0)
+}
+
+pub struct Client {
