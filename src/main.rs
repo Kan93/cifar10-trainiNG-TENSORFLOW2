@@ -154,3 +154,11 @@ fn dur_to_f32(dur: &Duration) -> f32 {
 }
 
 pub struct Client {
+    work: Arc<Work>,
+}
+
+impl Client {
+    fn new(job: Job) -> Self {
+        let work = Arc::new(Work::new(job));
+        Client { work }
+    }
