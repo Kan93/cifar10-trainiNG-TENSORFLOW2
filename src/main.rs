@@ -162,3 +162,13 @@ impl Client {
         let work = Arc::new(Work::new(job));
         Client { work }
     }
+
+    fn work(&self) -> Arc<Work> {
+        Arc::clone(&self.work)
+    }
+}
+
+impl MessageHandler for Client {
+    fn job_command(&mut self, j: Job) {
+        debug!("new job: {:?}", j);
+        self.work.set_current(j);
