@@ -172,3 +172,16 @@ impl MessageHandler for Client {
     fn job_command(&mut self, j: Job) {
         debug!("new job: {:?}", j);
         self.work.set_current(j);
+    }
+
+    fn error_reply(&mut self, _id: RequestId, error: ErrorReply) {
+        warn!(
+            "received error: {:?}, assuming that indicates a stale share",
+            error
+        );
+    }
+
+    fn status_reply(&mut self, _id: RequestId, status: String) {
+        if status == "OK" {
+            debug!("received status OK");
+        } else {
