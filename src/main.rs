@@ -193,3 +193,7 @@ impl MessageHandler for Client {
         warn!("unexpected job reply...");
     }
 }
+
+#[derive(PartialEq, Eq, Copy, Clone)]
+pub struct JobId(usize);
+pub struct Work {
