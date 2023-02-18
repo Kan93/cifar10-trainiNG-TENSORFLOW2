@@ -220,3 +220,12 @@ impl Work {
         self.job_id.fetch_add(1, Ordering::Release);
     }
 }
+
+struct Worker {
+    hash_count: Arc<AtomicUsize>,
+    work: Arc<Work>,
+    pool: Arc<Mutex<PoolClientWriter>>,
+    core: CoreId,
+    worker_id: u32,
+    step: u32,
+    alloc_policy: AllocPolicy,
