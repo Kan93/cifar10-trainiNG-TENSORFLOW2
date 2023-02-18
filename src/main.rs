@@ -210,3 +210,13 @@ impl Work {
         jid == JobId(self.job_id.load(Ordering::Relaxed))
     }
     pub fn current(&self) -> (JobId, Job) {
+        (
+            JobId(self.job_id.load(Ordering::Acquire)),
+            self.job.lock().unwrap().clone(),
+        )
+    }
+    pub fn set_current(&self, j: Job) {
+        *self.job.lock().unwrap() = j;
+        self.job_id.fetch_add(1, Ordering::Release);
+    }
+}
