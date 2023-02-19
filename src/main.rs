@@ -239,3 +239,11 @@ impl Worker {
         let mut algo = DEFAULT_ALGO;
         loop {
             let mut hasher = Hasher::new(algo, self.alloc_policy);
+            algo = loop {
+                trace!("getting work");
+                let (jid, job) = self.work.current();
+                let new_algo = job
+                    .algo()
+                    .map(|x| x.parse().unwrap())
+                    .unwrap_or(DEFAULT_ALGO);
+                if new_algo != algo {
