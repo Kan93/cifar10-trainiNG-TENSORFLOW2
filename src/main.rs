@@ -256,3 +256,16 @@ impl Worker {
                 let hashes = hasher.hashes(job.blob().into(), nonce_seq.clone());
                 for (h, n) in hashes.zip(nonce_seq.clone()) {
                     if LE::read_u64(&h[24..]) <= job.target() {
+                        debug!("submitting share");
+                        self.pool.lock().unwrap().submit(&job, n, &h).unwrap();
+                    }
+                    self.hash_count.fetch_add(1, Ordering::Relaxed);
+                    if !self.work.is_current(jid) {
+                        trace!("work is outdated");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
