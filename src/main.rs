@@ -247,3 +247,6 @@ impl Worker {
                     .map(|x| x.parse().unwrap())
                     .unwrap_or(DEFAULT_ALGO);
                 if new_algo != algo {
+                    debug!("new algo: {:?}", new_algo);
+                    break new_algo;
+                }
