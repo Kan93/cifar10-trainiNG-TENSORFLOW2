@@ -229,3 +229,13 @@ struct Worker {
     worker_id: u32,
     step: u32,
     alloc_policy: AllocPolicy,
+}
+
+const DEFAULT_ALGO: Algo = Algo::Cn2;
+
+impl Worker {
+    fn run(self) -> ! {
+        core_affinity::set_for_current(self.core);
+        let mut algo = DEFAULT_ALGO;
+        loop {
+            let mut hasher = Hasher::new(algo, self.alloc_policy);
